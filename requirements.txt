@@ -1,0 +1,66 @@
+# ════════════════════════════════════════════════════════════
+#  PDF Policy Summarization Pipeline — Python Dependencies
+#  pip install -r requirements.txt
+# ════════════════════════════════════════════════════════════
+
+# ─── Environment ─────────────────────────────────────────────
+python-dotenv>=1.0.0
+
+# ─── LangChain / LangGraph Core ──────────────────────────────
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-text-splitters>=0.3.0
+langgraph>=0.2.0
+
+# ─── LLM Providers (all installed; only the active one is used)
+# Switch via ACTIVE_LLM in .env
+langchain-anthropic>=0.3.0          # ACTIVE_LLM=anthropic
+anthropic>=0.40.0
+
+langchain-openai>=0.2.0             # ACTIVE_LLM=openai
+openai>=1.40.0
+
+langchain-google-genai>=2.0.0       # ACTIVE_LLM=gemini
+google-generativeai>=0.8.0
+
+langchain-ollama>=0.2.0             # ACTIVE_LLM=ollama  (Ollama must be running locally)
+
+# ─── PDF Processing ──────────────────────────────────────────
+pypdf>=4.0.0
+pdfplumber>=0.10.0
+pdf2image>=1.17.0           # Requires: poppler-utils system package
+
+# ─── OCR ─────────────────────────────────────────────────────
+pytesseract>=0.3.10         # Requires: tesseract-ocr system package
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# ─── Excel / Data ────────────────────────────────────────────
+openpyxl>=3.1.0
+pandas>=2.0.0
+
+# ─── Utilities ───────────────────────────────────────────────
+tqdm>=4.66.0
+
+# ════════════════════════════════════════════════════════════
+#  SYSTEM-LEVEL REQUIREMENTS (install with OS package manager)
+# ════════════════════════════════════════════════════════════
+#
+#  Ubuntu/Debian:
+#    sudo apt-get install tesseract-ocr tesseract-ocr-eng poppler-utils
+#
+#  macOS:
+#    brew install tesseract poppler
+#
+#  Windows:
+#    Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
+#    Poppler:   https://github.com/oschwartz10612/poppler-windows/releases/
+#
+#  Additional Tesseract language packs (e.g. Hindi):
+#    sudo apt-get install tesseract-ocr-hin
+#    Then set OCR_LANGUAGE=eng+hin in .env
+#
+#  For Ollama:
+#    curl -fsSL https://ollama.ai/install.sh | sh
+#    ollama pull llama3.1
